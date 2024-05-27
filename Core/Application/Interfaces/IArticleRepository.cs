@@ -11,7 +11,7 @@ namespace Application.Interfaces
     {
         Task<Article> Create(Article article);
         Task<Article> Update(Article article);
-        Task<Article> GetArticle(int id);
+        Task<Article> GetById(int id);
         Task<int> Delete(int id);
         Task<List<Article>> GetArticles();
     }
