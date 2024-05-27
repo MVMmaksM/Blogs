@@ -16,9 +16,35 @@ namespace Application.Services
             _articleRepository = articleRepository;
         }
 
-        public async Task<Article> GetArticleById(int id) 
+        public async Task GetArticleById(int id) 
         {
-            return await _articleRepository.GetById(id);
+             await _articleRepository.GetById(id);
+        }
+
+        public async Task GetArticles()
+        {
+            await _articleRepository.GetArticles();
+        }
+
+        public async Task CreateArticle(Article article)
+        {
+            await _articleRepository.Create(article);      
+        }
+
+        public async Task UpdateArticle(Article article)
+        {
+            var existArticle = await _articleRepository.GetById(article.Id);
+            if (existArticle is null)
+                throw new Exception();
+            await _articleRepository.Update(article);
+        }
+
+        public async Task DeletArticle(int id)
+        {
+            var existArticle = await _articleRepository.GetById(id);
+            if (existArticle is null)
+                throw new Exception();
+            await _articleRepository.Delete(id);
         }
     }
 }
