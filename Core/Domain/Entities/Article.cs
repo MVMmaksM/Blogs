@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Formats.Asn1;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,5 +16,6 @@ namespace Domain.Entities
         public int CountView { get; set; }
         public int CountLike { get; set; }
         public Author Author { get; set; }
+        public List<Tag> Tags { get; set; }
     }
 }

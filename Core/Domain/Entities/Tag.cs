@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class Author:BaseEntity
+    public class Tag:BaseEntity
     {
-        public User User { get; set; }
-        public List<Article> Articles { get; set; }
+        public string Name { get; set; }
     }
 }
