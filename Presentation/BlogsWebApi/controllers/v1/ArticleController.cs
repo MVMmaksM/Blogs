@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Application.Services;
+using AutoMapper;
+using BlogsWebApi.Contracts.Responce;
 
 namespace BlogsWebApi.Controllers.v1
 {
@@ -7,10 +9,12 @@ namespace BlogsWebApi.Controllers.v1
     public class ArticleController : BaseApiController
     {
         private readonly ArticleService _articleService;
+        private readonly IMapper _mapper;
 
-        public ArticleController(ArticleService articleService)
+        public ArticleController(ArticleService articleService, IMapper mapper)
         {
             _articleService = articleService;
+            _mapper = mapper;
         }
         [HttpGet]
         public async Task<IActionResult> GetAll() 
@@ -21,7 +25,8 @@ namespace BlogsWebApi.Controllers.v1
         [HttpGet("{id}")]
         public async Task<IActionResult> GetArticle(int id) 
         {
-            return Ok(await _articleService.GetArticleById(id));
+            var articleResponce = _mapper.Map<ArticleResponce>(await _articleService.GetArticleById(id));
+            return Ok(articleResponce);
         }
     }
 }

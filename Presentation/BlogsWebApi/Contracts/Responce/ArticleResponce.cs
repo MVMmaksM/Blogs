@@ -10,5 +10,6 @@
         public int CountView { get; set; }
         public int CountLike { get; set; }
         public string Author { get; set; }
+        public string Tags { get; set; }
     }
 }
