@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Application.Services;
+using Application.Interfaces;
 using AutoMapper;
 using BlogsWebApi.Contracts.Responce;
 
@@ -8,10 +8,10 @@ namespace BlogsWebApi.Controllers.v1
     [ApiVersion("1.0")]
     public class ArticleController : BaseApiController
     {
-        private readonly ArticleService _articleService;
+        private readonly IArticleService _articleService;
         private readonly IMapper _mapper;
 
-        public ArticleController(ArticleService articleService, IMapper mapper)
+        public ArticleController(IArticleService articleService, IMapper mapper)
         {
             _articleService = articleService;
             _mapper = mapper;
