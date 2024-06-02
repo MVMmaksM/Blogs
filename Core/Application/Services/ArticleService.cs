@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Services
 {
-    public class ArticleService
+    public class ArticleService : IArticleService
     {
         private readonly IArticleRepository _articleRepository;
         public ArticleService(IArticleRepository articleRepository)
