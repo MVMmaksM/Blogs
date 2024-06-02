@@ -16,35 +16,35 @@ namespace Application.Services
             _articleRepository = articleRepository;
         }
 
-        public async Task GetArticleById(int id) 
+        public async Task<Article> GetArticleById(int id) 
         {
-             await _articleRepository.GetById(id);
+            return await _articleRepository.GetById(id);
         }
 
-        public async Task GetArticles()
+        public async Task<List<Article>> GetArticles()
         {
-            await _articleRepository.GetArticles();
+           return await _articleRepository.GetArticles();
         }
 
-        public async Task CreateArticle(Article article)
+        public async Task<Article> CreateArticle(Article article)
         {
-            await _articleRepository.Create(article);      
+            return await _articleRepository.Create(article);      
         }
 
-        public async Task UpdateArticle(Article article)
+        public async Task<Article> UpdateArticle(Article article)
         {
             var existArticle = await _articleRepository.GetById(article.Id);
             if (existArticle is null)
                 throw new Exception();
-            await _articleRepository.Update(article);
+            return await _articleRepository.Update(article);
         }
 
-        public async Task DeletArticle(int id)
+        public async Task<int> DeletArticle(int id)
         {
             var existArticle = await _articleRepository.GetById(id);
             if (existArticle is null)
                 throw new Exception();
-            await _articleRepository.Delete(id);
+            return await _articleRepository.Delete(id);
         }
     }
 }
