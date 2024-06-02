@@ -9,7 +9,7 @@ namespace Application.Interfaces
 {
     public interface ITagRepository
     {
-        Task<Tag> Create(Tag);
+        Task<Tag> Create(Tag tag);
         Task<List<Tag>> GetTags();
         Task<Tag>GetById(int id);
     }
